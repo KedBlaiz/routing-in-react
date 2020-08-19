@@ -1,19 +1,19 @@
-import React, { Component } from 'react'
+import React from 'react'
+import { Route, Switch } from 'react-router-dom'
+import './App.css'
 import Welcome from './components/welcome/Welcome'
 import Clock from './components/clock/Clock'
 import Contact from './components/contact/Contact'
 import Navigation from './components/navigation/Navigation'
-import { Route, Switch } from 'react-router-dom'
-
-class App extends Component {
-  render() {
+import Alert from './components/alert/Alert'
+function App() {
     return (
       <div className="App">
 
         <Navigation />
+        
         <Switch>
           <Route
-            exact
             path='/welcome/:name'
             render={(props) => <Welcome {...props} name={props.match.params.name} />}
           />
@@ -28,11 +28,12 @@ class App extends Component {
             path='/Clock' component={Clock} />
           <Route
             path='/Contact' component={Contact} />
+          <Route component={Alert}/>
 
         </Switch>
       </div>
     )
   }
-}
+
 
 export default App
